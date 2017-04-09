@@ -1,13 +1,12 @@
-node
+node('dev')
 {
-   stage 'dev'
-   sh 'echo "Build Start ........................................................................."'
+   stage 'Get Artifact:'
    sh 'chmod 757 $WORKSPACE@script/*.sh'
    sh 'ssh bhagya@localhost mkdir -p $DEV_DESTINATION/'
    sh 'ssh bhagya@localhost chmod 757 $DEV_DESTINATION/'
    sh 'scp $WORKSPACE@script/*.sh bhagya@localhost:$DEV_DESTINATION/'
-   sh 'echo "Build End............................................................................"'
-   sh 'echo "Test Start..........................................................................."'
+
+   stage 'Test:'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/printn.sh 10'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/tablen.sh 17'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/primen.sh 10'
@@ -18,16 +17,17 @@ node
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/b.sh'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/c.sh'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/d.sh'
-   sh 'echo "Test End............................................................................."'
+}
 
-   stage 'test'
-   sh 'echo "Build Start ........................................................................."'
+node('test')
+{
+   stage 'Get Artifact:'
    sh 'chmod 757 $WORKSPACE@script/*.sh'
    sh 'ssh ravi@localhost mkdir -p $TEST_DESTINATION/'
    sh 'ssh ravi@localhost chmod 757 $TEST_DESTINATION/'
    sh 'scp $WORKSPACE@script/*.sh ravi@localhost:$TEST_DESTINATION/'
-   sh 'echo "Build End............................................................................"'
-   sh 'echo "Test Start..........................................................................."'
+
+   stage 'Test:'
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/printn.sh 10'
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/tablen.sh 17'
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/primen.sh 10'
@@ -38,6 +38,4 @@ node
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/b.sh'
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/c.sh'
    sh 'ssh ravi@localhost bash $TEST_DESTINATION/d.sh'
-   sh 'echo "Test End............................................................................."'   
-   
 }
