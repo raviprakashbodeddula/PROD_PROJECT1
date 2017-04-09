@@ -13,7 +13,7 @@ node
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/primen.sh 10'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/sort.sh 5 2 3 1 4'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/compoundint.sh 100000 1y 12.4'
-   sh 'ssh bhagya@localhost bash $DEV_DESTINATION/factorialn1.sh 5'
+   sh 'ssh bhagya@localhost bash $DEV_DESTINATION/factorialn.sh 5'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/a.sh 5'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/b.sh'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/c.sh'
