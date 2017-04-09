@@ -2,10 +2,10 @@ node
 {
    stage 'dev'
    sh 'echo "Build Start ........................................................................."'
-   sh 'chmod 757 $WORKSPACE/*.sh'
+   sh 'chmod 757 $WORKSPACE@script/*.sh'
    sh 'ssh bhagya@localhost mkdir -p $DEV_DESTINATION/'
    sh 'ssh bhagya@localhost chmod 757 $DEV_DESTINATION/'
-   sh 'scp $WORKSPACE/*.sh bhagya@localhost:$DEV_DESTINATION/'
+   sh 'scp $WORKSPACE@script/*.sh bhagya@localhost:$DEV_DESTINATION/'
    sh 'echo "Build End............................................................................"'
    sh 'echo "Test Start..........................................................................."'
    sh 'ssh bhagya@localhost bash $DEV_DESTINATION/printn.sh 10'
